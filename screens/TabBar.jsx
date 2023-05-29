@@ -8,6 +8,7 @@ import CreatePost from "./CreatePost";
 import Reals from "./Reals";
 import Profile from "./Profile";
 import { Ionicons } from "@expo/vector-icons";
+import { colors } from "../constants/colors";
 
 const Tabs = createBottomTabNavigator();
 const BottomTabs = () => {
@@ -31,7 +32,7 @@ const BottomTabs = () => {
             return <Ionicons name={iconName} size={30} color={color} />;
           },
           headerShown: false,
-          tabBarActiveTintColor: "orange",
+          tabBarActiveTintColor: colors.orange,
           tabBarInactiveTintColor: "gray",
           tabBarHideOnKeyboard: true,
           tabBarShowLabel: false,
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
     left: 20,
     right: 20,
     elevation: 0,
-    backgroundColor: "white",
+    backgroundColor: colors.primary,
     borderRadius: 15,
     height: 70,
   },
