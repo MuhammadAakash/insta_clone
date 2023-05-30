@@ -8,7 +8,7 @@ import NewsFeedCard from "../components/NewsFeed/NewsFeedCard";
 const NewsFeed = () => {
   const { posts } = useContext(AppContext);
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, paddingTop: 20 }}>
       <Header />
       <View style={{ flex: 1 }}>
         <FlatList
@@ -17,13 +17,13 @@ const NewsFeed = () => {
           horizontal
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => <Stories image={item.postImage} />}
-          style={{ height: "55vh" }}
         />
         <FlatList
           data={posts}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => <NewsFeedCard post={item} posts={posts} />}
           showsVerticalScrollIndicator={false}
+          ListFooterComponent={() => <View style={{ height: 120 }} />}
         />
       </View>
     </View>
