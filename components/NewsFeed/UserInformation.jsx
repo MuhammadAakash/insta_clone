@@ -6,7 +6,7 @@ const UserInformation = ({ user }) => {
   return (
     <View style={styles.userInformation}>
       <View style={styles.userText}>
-        <Image style={styles.userImage} source={{ uri: user.image }} />
+        <Image style={styles.userImage} source={{ uri: user.profileImage }} />
         <Text style={styles.userName}>{user.name}</Text>
         <Ionicons
           name="checkmark-done-circle"
