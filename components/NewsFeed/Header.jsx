@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { icons } from '../../constants/icons';
 import { Ionicons } from '@expo/vector-icons';
-import { icon } from '@fortawesome/fontawesome-svg-core';
 
 
 const Header = () => {
