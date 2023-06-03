@@ -2,8 +2,9 @@ import { Ionicons } from "@expo/vector-icons";
 import { useContext, useState } from "react";
 import { View, TouchableOpacity, StyleSheet } from "react-native";
 import { AppContext } from "../../context/AppContext";
+import { useNavigation } from "@react-navigation/native";
 
-const LikeComment = ({ post, isLike, setIsLike, commentPres }) => {
+const LikeComment = ({ post, isLike, setIsLike }) => {
   //   const [isLike, setIsLike] = useState(false);
   const [isBookmark, setIsBookmark] = useState(false);
   const { setPosts } = useContext(AppContext);
@@ -25,6 +26,7 @@ const LikeComment = ({ post, isLike, setIsLike, commentPres }) => {
   const onBookmarkPress = () => {
     setIsBookmark(!isBookmark);
   };
+  const navigation = useNavigation();
 
   return (
     <View style={styles.mainContainer}>
@@ -36,12 +38,12 @@ const LikeComment = ({ post, isLike, setIsLike, commentPres }) => {
             color={isLike ? "red" : "black"}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={commentPres}>
+        <TouchableOpacity onPress={navigation.navigate("comments")}>
           <Ionicons name="chatbubble-outline" size={30} color="black" />
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity onPress={onBookmarkPress}>
+      <TouchableOpacity>
         <Ionicons
           name={isBookmark ? "bookmark" : "bookmark-outline"}
           size={30}

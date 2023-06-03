@@ -1,8 +1,8 @@
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../../constants/colors";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 
-const UserInformation = ({ user }) => {
+const UserInformation = ({ user, showSheet }) => {
   return (
     <View style={styles.userInformation}>
       <View style={styles.userText}>
@@ -14,9 +14,9 @@ const UserInformation = ({ user }) => {
           color={colors.darkGreen}
         ></Ionicons>
       </View>
-      <View style={styles.userIcon}>
+      <TouchableOpacity style={styles.userIcon} onPress={showSheet}>
         <Ionicons name="ellipsis-vertical" size={30} color="black" />
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };

@@ -18,7 +18,7 @@ const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 const MAX_TRANSLATE_Y = -SCREEN_HEIGHT + 50;
 
-const BottomSheet = React.forwardRef(({}, ref) => {
+const BottomSheet = React.forwardRef(({ children }, ref) => {
   const translateY = useSharedValue(0);
 
   const context = useSharedValue({ y: 0 });
@@ -54,7 +54,7 @@ const BottomSheet = React.forwardRef(({}, ref) => {
     .onEnd(() => {
       if (translateY.value > -SCREEN_HEIGHT / 3) {
         scrollTo(0);
-      } else if (translateY.value < MAX_TRANSLATE_Y / 2) {
+      } else if (translateY.value < MAX_TRANSLATE_Y / 1) {
         scrollTo(MAX_TRANSLATE_Y);
       }
     });
@@ -75,6 +75,7 @@ const BottomSheet = React.forwardRef(({}, ref) => {
     <GestureDetector gesture={gesture}>
       <Animated.View style={[styles.bottomSheetContainer, rBottomSheetStyle]}>
         <View style={styles.line} />
+        <View>{children}</View>
       </Animated.View>
     </GestureDetector>
   );
@@ -84,10 +85,10 @@ const styles = StyleSheet.create({
   bottomSheetContainer: {
     height: SCREEN_HEIGHT,
     width: "100%",
-    backgroundColor: "black",
+    backgroundColor: colors.primary,
     borderRadius: 20,
     position: "absolute",
-    top: SCREEN_HEIGHT,
+    top: SCREEN_HEIGHT + 50,
   },
   line: {
     height: 5,
