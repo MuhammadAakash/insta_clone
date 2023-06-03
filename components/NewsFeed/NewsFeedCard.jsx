@@ -14,14 +14,9 @@ const NewsFeedCard = ({ post, onPress }) => {
 
   return (
     <View style={styles.mainCard}>
-      <UserInformation user={post} />
+      <UserInformation showSheet={onPress} user={post} />
       <Post isvideo={false} url={post.postImage} />
-      <LikeComment
-        post={post}
-        isLike={isLike}
-        setIsLike={setIsLike}
-        commentPres={onPress}
-      />
+      <LikeComment post={post} isLike={isLike} setIsLike={setIsLike} />
       {post.likes > 0 && <Text style={styles.likeTextStyle}>{LikeText}</Text>}
       <Text
         style={{

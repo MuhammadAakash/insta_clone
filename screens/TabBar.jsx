@@ -9,8 +9,11 @@ import Reals from "./Reals";
 import Profile from "./Profile";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../constants/colors";
+import { createStackNavigator } from "@react-navigation/stack";
+import Comments from "../components/NewsFeed/Comments";
 
 const Tabs = createBottomTabNavigator();
+const NewsFeedStack = createStackNavigator();
 const BottomTabs = () => {
   return (
     <NavigationContainer>
@@ -36,17 +39,35 @@ const BottomTabs = () => {
           tabBarInactiveTintColor: "gray",
           tabBarHideOnKeyboard: true,
           tabBarShowLabel: false,
-          tabBarStyle: styles.tabBar
+          tabBarStyle: styles.tabBar,
         })}
-
       >
-        <Tabs.Screen name="NewsFeed" component={NewsFeed} />
+        <Tabs.Screen name="NewsFeed" component={NewsFeedStackScreen} />
         <Tabs.Screen name="Search" component={SearchScreen} />
         <Tabs.Screen name="CreatePost" component={CreatePost} />
         <Tabs.Screen name="Reals" component={Reals} />
         <Tabs.Screen name="Profile" component={Profile} />
       </Tabs.Navigator>
     </NavigationContainer>
+  );
+};
+
+const NewsFeedStackScreen = () => {
+  return (
+    <NewsFeedStack.Navigator>
+      <NewsFeedStack.Screen
+        name="newsfeed"
+        component={NewsFeed}
+        options={() => ({
+          headerShown: false,
+          headerTitle: "",
+        })}
+      ></NewsFeedStack.Screen>
+      <NewsFeedStack.Screen
+        name="comments"
+        component={Comments}
+      ></NewsFeedStack.Screen>
+    </NewsFeedStack.Navigator>
   );
 };
 
