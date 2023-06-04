@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  getFocusedRouteNameFromRoute,
+} from "@react-navigation/native";
 import NewsFeed from "./NewsFeed";
 import SearchScreen from "./SearchScreen";
 import CreatePost from "./CreatePost";
@@ -52,7 +55,19 @@ const BottomTabs = () => {
   );
 };
 
-const NewsFeedStackScreen = () => {
+const NewsFeedStackScreen = ({ navigation, route }) => {
+  const tabHiddenRoutes = ["comments"];
+
+  useLayoutEffect(() => {
+    if (tabHiddenRoutes.includes(getFocusedRouteNameFromRoute(route))) {
+      navigation.setOptions({ tabBarStyle: { display: "none" } });
+    } else {
+      navigation.setOptions({
+        tabBarStyle: styles.tabBar,
+      });
+    }
+  });
+
   return (
     <NewsFeedStack.Navigator>
       <NewsFeedStack.Screen

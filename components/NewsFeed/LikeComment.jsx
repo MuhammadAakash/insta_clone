@@ -4,8 +4,8 @@ import { View, TouchableOpacity, StyleSheet } from "react-native";
 import { AppContext } from "../../context/AppContext";
 import { useNavigation } from "@react-navigation/native";
 
-const LikeComment = ({ post, isLike, setIsLike }) => {
-  //   const [isLike, setIsLike] = useState(false);
+const LikeComment = ({ post }) => {
+  const [isLike, setIsLike] = useState(false);
   const [isBookmark, setIsBookmark] = useState(false);
   const { setPosts } = useContext(AppContext);
 
@@ -26,6 +26,9 @@ const LikeComment = ({ post, isLike, setIsLike }) => {
   const onBookmarkPress = () => {
     setIsBookmark(!isBookmark);
   };
+  const goToComments = () => {
+    navigation.navigate("comments", { comments: post.comments, post: post });
+  };
   const navigation = useNavigation();
 
   return (
@@ -38,12 +41,12 @@ const LikeComment = ({ post, isLike, setIsLike }) => {
             color={isLike ? "red" : "black"}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={navigation.navigate("comments")}>
+        <TouchableOpacity onPress={goToComments}>
           <Ionicons name="chatbubble-outline" size={30} color="black" />
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onBookmarkPress}>
         <Ionicons
           name={isBookmark ? "bookmark" : "bookmark-outline"}
           size={30}

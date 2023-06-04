@@ -36,7 +36,7 @@ const NewsFeed = () => {
             data={posts}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item }) => (
-              <NewsFeedCard post={item} posts={posts} onPress={onPress} />
+              <NewsFeedCard post={item} onPress={onPress} />
             )}
             showsVerticalScrollIndicator={false}
             ListFooterComponent={() => <View style={{ height: 120 }} />}
