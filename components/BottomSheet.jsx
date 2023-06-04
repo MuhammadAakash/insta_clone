@@ -18,7 +18,7 @@ const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 const MAX_TRANSLATE_Y = -SCREEN_HEIGHT + 50;
 
-const BottomSheet = React.forwardRef(({ children }, ref) => {
+const BottomSheet = forwardRef(({ children }, ref) => {
   const translateY = useSharedValue(0);
 
   const context = useSharedValue({ y: 0 });
