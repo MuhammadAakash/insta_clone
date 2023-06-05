@@ -43,7 +43,7 @@ const NewsFeed = () => {
           />
         </View>
       </View>
-      <BottomSheet ref={ref} />
+      {/* <BottomSheet ref={ref} /> */}
     </GestureHandlerRootView>
   );
 };
