@@ -13,12 +13,18 @@ const SearchScreen = () => {
     const filteredPosts = posts.filter((post) => {
       if (post && post.description && text !== "") {
         return post.description.toLowerCase().includes(text.toLowerCase());
+      } else {
+        return null;
       }
     });
-
-    setAllPosts(filteredPosts);
+    if (filteredPosts.length > 0) {
+      setAllPosts(filteredPosts);
+    } else if (text === "") {
+      setAllPosts(posts);
+    } else if (filteredPosts.length === 0) {
+      setAllPosts([]);
+    }
   };
-  console.log("Filtered posts are :", allPosts);
   return (
     <View style={styles.flatList}>
       <Ionicons
