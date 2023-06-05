@@ -3,11 +3,9 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 const SearchScreenCard = ({ post }) => {
   return (
-    <SafeAreaProvider>
-      <View>
-        <Image style={styles.image} source={{ uri: post.postImage }} />
-      </View>
-    </SafeAreaProvider>
+    <View>
+      <Image style={styles.image} source={{ uri: post.postImage }} />
+    </View>
   );
 };
 
